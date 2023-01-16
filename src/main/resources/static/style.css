@@ -1,0 +1,25 @@
+*{
+    background: black;
+}
+
+#button-login{
+
+    border: 1px solid white;
+    color: white;
+    background: black;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+#button-login:hover{
+    opacity: 1;
+}
+
+#home-page,
+#details-page{
+    color: white;
+    text-decoration-line: none;
+}
+
+
+

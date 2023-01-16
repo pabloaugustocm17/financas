@@ -4,6 +4,7 @@ import com.example.financa.actions.Utils;
 import com.example.financa.entities.User;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Component
@@ -15,7 +16,7 @@ public class UserFactory implements Factory {
         return new User();
     }
 
-    public User createUserByLine(String line){
+    public Object createByLine(String line){
 
         String[] args = line.split(";");
 
@@ -24,7 +25,7 @@ public class UserFactory implements Factory {
         String password = args[2];
         String name = args[3];
         double value_account = Double.parseDouble(args[4]);
-        LocalDateTime birth_date = Utils.stringToLocalDateTime(args[5]);
+        LocalDate birth_date = Utils.stringToLocalDate(args[5]);
 
         return new User(id, email, password, name, value_account, birth_date);
 

@@ -1,18 +1,13 @@
 package com.example.financa.actions;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Utils {
 
-    private static final String PATTERN_DATE = "yyyy-MM-dd";
+    public static LocalDate stringToLocalDate(String date){
 
-    public static LocalDateTime stringToLocalDateTime(String date){
+        return LocalDate.parse(date);
 
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN_DATE);
-
-        //return LocalDateTime.parse(date, formatter);
-
-        return LocalDateTime.now();
     }
 
 

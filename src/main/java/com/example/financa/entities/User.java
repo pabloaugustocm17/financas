@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -28,6 +28,6 @@ public class User{
 
     private double value_account;
 
-    private LocalDateTime birth_date;
+    private LocalDate birth_date;
 
 }

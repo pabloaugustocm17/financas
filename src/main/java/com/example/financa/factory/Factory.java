@@ -7,4 +7,7 @@ public interface Factory {
 
     Object create();
 
+    Object createByLine(String line);
+
+
 }

@@ -22,17 +22,23 @@ public class BDOperations {
 
                 String line = loader.nextLine();
 
-                User user = Factorys.userFactory.createUserByLine(line);
+                User user = (User) Factorys.userFactory.createByLine(line);
 
                 userRepository.save(user);
 
             }
-
-
         } catch (IOException e) {
             throw new RuntimeException("File 'settings.txt' dont exist");
         }
 
+    }
+    public static void saveBD(UserRepository userRepository, User userChanged){
+
+        User userActual = userRepository.findUserById(userChanged.getId());
+
+        if(userActual != userChanged){
+            userRepository.saveAndFlush(userChanged);
+        }
 
     }
 
