@@ -1,0 +1,20 @@
+*{
+    background: black;
+    margin-top: 1%;
+}
+
+#login-page,
+#home-page,
+#details-page{
+    color: white;
+    text-decoration-line: none;
+}
+
+#nav-bar{
+    padding-bottom: 13px;
+    border-bottom: 1px solid white;
+}
+
+#container-nav{
+    padding-left: 19%;
+}
