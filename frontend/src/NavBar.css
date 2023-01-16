@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  background-color: black;
+}
+
+.NavBar{
+  border-bottom: 1px solid red;
+}
+
+#col-login,
+#col-details,
+#col-home{
+  margin-top: 2%;
+  padding-bottom: 2%;
+}
+
+#text-pattern{
+  color: white;
+  text-decoration-line: none;
+  transition: 250ms;
+  transition-timing-function: linear;
+}
+
+#text-pattern:hover{
+  color: blue;
+  font-size: large;
+  
+}
+
+
+
