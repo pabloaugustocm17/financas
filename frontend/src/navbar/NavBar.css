@@ -1,15 +1,15 @@
-.App {
-  text-align: center;
+*{
   background-color: black;
 }
 
 .NavBar{
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid white;
 }
 
 #col-login,
 #col-details,
 #col-home{
+  text-align: center;
   margin-top: 2%;
   padding-bottom: 2%;
 }
@@ -22,9 +22,7 @@
 }
 
 #text-pattern:hover{
-  color: blue;
-  font-size: large;
-  
+  font-size: large; 
 }
 
 

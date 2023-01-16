@@ -1,8 +1,8 @@
-import NavBar from './NavBar';
+import NavBar from '../navbar/NavBar';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className='NavBar'>
       <NavBar />
     </div>
   );
