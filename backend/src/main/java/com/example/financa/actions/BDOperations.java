@@ -32,14 +32,23 @@ public class BDOperations {
         }
 
     }
-    public static void saveBD(UserRepository userRepository, User userChanged){
+    public static void saveUser(UserRepository userRepository, User userChanged){
 
         User userActual = userRepository.findUserById(userChanged.getId());
 
-        if(userActual != userChanged){
+        if(userActual == userChanged){
             userRepository.saveAndFlush(userChanged);
         }
 
     }
+    public static void saveNewUser(UserRepository userRepository, User newUser){
 
+        userRepository.save(newUser);
+
+    }
+    public static boolean isUserExist(UserRepository userRepository, User user){
+
+        return userRepository.isUserExist(user.getEmail()) == null;
+
+    }
 }

@@ -24,7 +24,7 @@ public class UserController {
 
     @PutMapping("/saveBD")
     private void saveBdByRequest(@RequestBody User user){
-        BDOperations.saveBD(this.userRepository, user);
+        BDOperations.saveUser(this.userRepository, user);
     }
 
 }

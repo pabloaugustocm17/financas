@@ -1,5 +1,6 @@
 package com.example.financa.entities;
 
+import com.example.financa.actions.Utils;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,4 +31,43 @@ public class User{
 
     private LocalDate birth_date;
 
+    /* Init */
+
+    public void init(String email, String password, String name, LocalDate birth_date){
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.value_account = 0;
+        this.birth_date = birth_date;
+    }
+
+    /* Constructors */
+
+    public User(String email, String password, String name, String birth_date){
+        init(email, password, name, Utils.stringToLocalDate(birth_date));
+    }
+
+    public User(String email, String password, String name, LocalDate birth_date){
+        init(email, password, name, birth_date);
+    }
+
+    /* Validates */
+
+    public String validateUser(){
+
+        String response_validate_email = Utils.validateEmail(this.email);
+
+        if(!response_validate_email.equals(Utils.SUCESS_REQUEST)){
+            return response_validate_email;
+        }
+
+        String response_validate_password = Utils.validatePassword(this.password);
+
+        if(!response_validate_password.equals(Utils.SUCESS_REQUEST)){
+            return response_validate_password;
+        }
+
+        return Utils.SUCESS_REQUEST;
+
+    }
 }
