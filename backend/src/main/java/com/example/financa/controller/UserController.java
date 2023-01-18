@@ -3,11 +3,9 @@ package com.example.financa.controller;
 import com.example.financa.actions.BDOperations;
 import com.example.financa.entities.User;
 import com.example.financa.repository.UserRepository;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class UserController {
 

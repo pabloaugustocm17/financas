@@ -7,6 +7,10 @@ class LoginService{
     loadBD(){
         return axios.request(PAGE_URL + "loadBD");
     }
+
+    realizeLogin(props){
+        return axios.request(PAGE_URL + "login");
+    }
     
 }
 

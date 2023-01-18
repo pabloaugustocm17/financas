@@ -3,8 +3,22 @@
 #modal-body,
 #modal-footer,
 #modal-title,
-#modal-body-text{
+#modal-body-text,
+#email-adress-form,
+#form-body,
+#control-form-email,
+#password-form,
+#error-area{
     background-color: white;
+}
+
+.mb-3{
+    background-color: white;
+}
+
+#error-area{
+    padding: 2px;
+    color: red;
 }
 
 
