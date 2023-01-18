@@ -2,24 +2,26 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./ModalLogin.css";
-import LoginService from '../service/LoginService';
-import React from 'react';
+import realizeLogin from '../service/LoginService';
+import React, {useState} from 'react';
 
-const errorMessage = '';
+function login(email, password){
 
-function login(props){
+    console.log('email (Modal) -> ' + email);
 
-    var requestLogin = LoginService.realizeLogin(props);
+    const requestLogin = realizeLogin(email, password);
 
     if(requestLogin !== '200'){
-       this.errorMessage = requestLogin;
-    }else{
-
+       
     }
-
 }
 
+
 const ModalLogin = (props) => {
+
+    const[email, setEmail] = useState("");
+    const[password, setPassword] = useState("");
+    const[errorMessage, setErrorMessage] = useState("");
 
     return (
 
@@ -38,9 +40,10 @@ const ModalLogin = (props) => {
                 <Form id = "form-body" >
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label id = "email-adress-form">Email address</Form.Label>
-                        <Form.Control id = "control-form-email"
+                        <Form.Control
                             type="email"
-                            placeholder="name@example.com"
+                            placeholder="name@example.com"  
+                            onChange={(e) => setEmail(e.target.value)}    
                             autoFocus
                         />
                     </Form.Group>
@@ -49,9 +52,10 @@ const ModalLogin = (props) => {
                         controlId="exampleForm.ControlTextarea1"
                     >
                         <Form.Label id = "password-form">Password</Form.Label>
-                        <Form.Control id = "control-form-email"
+                        <Form.Control
                             type="password"
-                            placeholder="!LkMn87/"
+                            placeholder="!.LkMn87/"
+                            onChange={(e) => setPassword(e.target.value)} 
                         />
                         <p id= "error-area">{errorMessage}</p>
                     </Form.Group>
@@ -59,7 +63,7 @@ const ModalLogin = (props) => {
             </Modal.Body>
 
             <Modal.Footer id = "modal-footer">
-                <Button variant="primary" type="submit" >Login</Button>
+                <Button variant="primary" type="submit" onClick={() => login(email, password, errorMessage)}>Login</Button>
                 <Button variant="secondary" onClick={props.onHide}>Close</Button>
             </Modal.Footer>
                 

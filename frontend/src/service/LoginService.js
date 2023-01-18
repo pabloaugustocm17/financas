@@ -1,17 +1,36 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 const PAGE_URL = "http://localhost:8080/"
 
-class LoginService{
-    
-    loadBD(){
+const LoginService = () =>{
+
+    const [requestMessage, setRequestMessage] = useState("");
+
+    const loadBD = () => {
         return axios.request(PAGE_URL + "loadBD");
     }
 
-    realizeLogin(props){
-        return axios.request(PAGE_URL + "login");
-    }
-    
-}
+    const realizeLogin = (email, password) => {
 
-export default new LoginService()
+        axios.post(PAGE_URL + "login", {
+            "email" : email,
+            "password" : password
+        })
+        .then((response) => {
+
+            setRequestMessage(response.data);
+        
+        })
+
+        console.log(requestMessage);
+
+        return requestMessage;
+
+    }
+
+}
+    
+    
+
+export default LoginService
