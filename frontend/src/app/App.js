@@ -12,3 +12,10 @@ const App = () => {
 }
 
 export default App;
+
+
+//#401839
+//#260F22
+//#A69D8D
+//#8C7B65
+//#0D0D0D

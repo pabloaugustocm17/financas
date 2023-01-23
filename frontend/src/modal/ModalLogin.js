@@ -62,9 +62,9 @@ const ModalLogin = (props) => {
             </Modal.Header>
 
             <Modal.Body id = "modal-body">
+                <p id= "error-area">{errorMessage}</p>
                 <Form id = "form-body" >
-                    <p id= "error-area">{errorMessage}</p>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group id = "modal-form-group">
                         <Form.Label id = "email-adress-form">Email address</Form.Label>
                         <Form.Control
                             type="email"
@@ -73,10 +73,7 @@ const ModalLogin = (props) => {
                             autoFocus
                         />
                     </Form.Group>
-                    <Form.Group
-                        className="mb-3"
-                        controlId="exampleForm.ControlTextarea1"
-                    >
+                    <Form.Group id = "modal-form-group">
                         <Form.Label id = "password-form">Password</Form.Label>
                         <Form.Control
                             type="password"
@@ -85,11 +82,12 @@ const ModalLogin = (props) => {
                         />
                     </Form.Group>
                 </Form>
+                <p id= "register-area">Register</p>
             </Modal.Body>
 
             <Modal.Footer id = "modal-footer">
-                <Button variant="primary" onClick={() => handleLogin()}>Login</Button>
-                <Button variant="secondary" onClick={() => handleClose()}>Close</Button>
+                <Button id = "button-login" onClick={() => handleLogin()}>Login</Button>
+                <Button id = "button-close" onClick={() => handleClose()}>Close</Button>
             </Modal.Footer>
                 
         </Modal>

@@ -1,0 +1,13 @@
+.Home{
+    padding-top: 2%;
+}
+
+#img-home,
+#text-home{
+    color: white;
+}
+
+#col-img-home,
+#col-text-home{
+    text-align: center;
+}

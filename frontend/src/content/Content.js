@@ -1,9 +1,19 @@
+import { Container, Row } from "react-bootstrap";
+import Home from "./Home";
+
 const Content= () =>{
 
     return (
-        <h1>
-            Content
-        </h1>
+        <div className="Content">
+
+            <Container>
+                <Row>
+                    <Home/>        
+                </Row>
+            </Container>
+
+        </div>
+        
     );
 
 }
