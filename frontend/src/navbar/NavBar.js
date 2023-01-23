@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 
 const NavBar = () => {
 
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
 
     return (
         <div className='NavBar'>

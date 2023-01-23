@@ -2,26 +2,34 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./ModalLogin.css";
-import realizeLogin from '../service/LoginService';
+import RealizeLogin from '../service/RealizeLogin';
 import React, {useState} from 'react';
 
-function login(email, password){
+async function login(email, password){
 
-    console.log('email (Modal) -> ' + email);
+    const response = await RealizeLogin(email, password);
 
-    const requestLogin = realizeLogin(email, password);
+    return response;
 
-    if(requestLogin !== '200'){
-       
-    }
 }
-
 
 const ModalLogin = (props) => {
 
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[errorMessage, setErrorMessage] = useState("");
+
+    const handleLogin = async () =>{
+        const response = await login(email,password);
+        setErrorMessage(response);
+    }
+
+    const handleClose = () => {
+
+        setErrorMessage('');
+        props.onHide();
+
+    }
 
     return (
 
@@ -38,6 +46,7 @@ const ModalLogin = (props) => {
 
             <Modal.Body id = "modal-body">
                 <Form id = "form-body" >
+                    <p id= "error-area">{errorMessage}</p>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label id = "email-adress-form">Email address</Form.Label>
                         <Form.Control
@@ -57,14 +66,13 @@ const ModalLogin = (props) => {
                             placeholder="!.LkMn87/"
                             onChange={(e) => setPassword(e.target.value)} 
                         />
-                        <p id= "error-area">{errorMessage}</p>
                     </Form.Group>
                 </Form>
             </Modal.Body>
 
             <Modal.Footer id = "modal-footer">
-                <Button variant="primary" type="submit" onClick={() => login(email, password, errorMessage)}>Login</Button>
-                <Button variant="secondary" onClick={props.onHide}>Close</Button>
+                <Button variant="primary" onClick={() => handleLogin()}>Login</Button>
+                <Button variant="secondary" onClick={() => handleClose()}>Close</Button>
             </Modal.Footer>
                 
         </Modal>

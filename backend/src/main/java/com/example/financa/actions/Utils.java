@@ -14,6 +14,10 @@ public class Utils {
 
     public static String validateEmail(String email){
 
+        if(email.isBlank()){
+            return "Email blank";
+        }
+        
         if(!email.contains("@")){
             return "Email dont contains '@'";
         }
