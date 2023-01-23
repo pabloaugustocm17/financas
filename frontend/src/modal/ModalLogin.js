@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./ModalLogin.css";
 import RealizeLogin from '../service/RealizeLogin';
+import LoadBD from '../service/BDService';
 import React, {useState} from 'react';
 
 async function login(email, password){
@@ -15,18 +16,34 @@ async function login(email, password){
 
 const ModalLogin = (props) => {
 
+    const[firstLogin, setFirstLogin] = useState(false);
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[errorMessage, setErrorMessage] = useState("");
 
     const handleLogin = async () =>{
+        
         const response = await login(email,password);
-        setErrorMessage(response);
+
+        //Use to tests
+        if(firstLogin === false){
+            const bd_load = LoadBD();
+            console.log(bd_load);
+            setFirstLogin(true);
+        }
+
+        if(response !== 200){
+            setErrorMessage(response);
+        }else{
+            setErrorMessage('');
+        }
     }
 
     const handleClose = () => {
 
         setErrorMessage('');
+        setEmail('');
+        setPassword('');
         props.onHide();
 
     }
