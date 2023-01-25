@@ -22,4 +22,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             "FROM User u " +
             "WHERE u.email = :email")
     String isUserExist(@Param("email") String email);
+
+    @Query(" SELECT u " +
+            "FROM User u " +
+            "WHERE u.email = :email " +
+            "AND u.password = :password")
+    User getUserByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
 }

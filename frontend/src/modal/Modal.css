@@ -9,7 +9,9 @@
 #password-form,
 #error-area,
 #register-area,
-#modal-form-group{
+#modal-form-group, 
+#name-form, 
+#birthdate-form{
     background-color: #350C40;
     color: white;
 }
@@ -28,6 +30,10 @@
 #email-adress-form, 
 #birthdate-form{
     padding-top: 10px;
+}
+
+#modal-form-group{
+    padding-bottom: 20px;
 }
 
 #error-area{

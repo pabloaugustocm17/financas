@@ -31,24 +31,34 @@ public class User{
 
     private LocalDate birth_date;
 
+    @OneToOne
+    private TokenUser tokenUser;
+
+
     /* Init */
 
-    public void init(String email, String password, String name, LocalDate birth_date){
+    public void init(String email, String password, String name, double value_account ,LocalDate birth_date){
         this.email = email;
         this.password = password;
         this.name = name;
         this.value_account = 0;
         this.birth_date = birth_date;
+        this.tokenUser = new TokenUser(this.birth_date);
     }
 
     /* Constructors */
 
     public User(String email, String password, String name, String birth_date){
-        init(email, password, name, Utils.stringToLocalDate(birth_date));
+        init(email, password, name, 0, Utils.stringToLocalDate(birth_date));
     }
 
     public User(String email, String password, String name, LocalDate birth_date){
-        init(email, password, name, birth_date);
+        init(email, password, name,0, birth_date);
+    }
+
+    public User(Long id, String email, String password, String name, double value_account, LocalDate birth_date){
+        this.id = id;
+        init(email, password, name, value_account,birth_date);
     }
 
     /* Validates */

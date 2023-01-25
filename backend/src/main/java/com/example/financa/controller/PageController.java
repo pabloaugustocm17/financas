@@ -31,11 +31,9 @@ public class PageController {
             return ResponseEntity.ok().body(response_validate_email);
         }
 
-        Long idUser = userRepository.loginUser(logindto.getEmail(), logindto.getPassword());
+        Long id_user = userRepository.loginUser(logindto.getEmail(), logindto.getPassword());
 
-        System.out.println(idUser);
-
-        if(idUser == null){
+        if(id_user == null){
             return ResponseEntity.ok().body("Email or password incorrect");
         }
 
