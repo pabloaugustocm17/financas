@@ -20,7 +20,7 @@ const NavBar = () => {
                         <a href = "#" id="text-pattern">Details</a>
                     </Col>
                     <Col sm={4} id = "col-pattern">
-                        <a id="text-pattern"  onClick={() => setModalShow(true)}>Login</a>
+                        <a id="text-pattern" href="#" onClick={() => setModalShow(true)}>Login</a>
                     </Col>
                 </Row>
             </Container>

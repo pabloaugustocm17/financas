@@ -49,48 +49,54 @@ const ModalLogin = (props) => {
     }
 
     return (
-
-        <Modal
+        
+        <div className='ModalLogin'>
+            <Modal
             {...props}
+            size = 'md'
             aria-labelledby="contained-modal-title-vcenter"
+            dialogClassName = "modal-login-dialog"
+            contentClassName='modal-login-content'
+            id = "modal"
             centered
-        >
-                
-            <Modal.Header closeButton
-            id = "modal-header">
-                <Modal.Title id = "modal-title">Login</Modal.Title>
-            </Modal.Header>
+            >
+                <Modal.Header
+                id = "modal-header">
+                    <Modal.Title id = "modal-title">Login</Modal.Title>
+                </Modal.Header>
 
-            <Modal.Body id = "modal-body">
-                <p id= "error-area">{errorMessage}</p>
-                <Form id = "form-body" >
-                    <Form.Group id = "modal-form-group">
-                        <Form.Label id = "email-adress-form">Email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="name@example.com"  
-                            onChange={(e) => setEmail(e.target.value)}    
-                            autoFocus
-                        />
-                    </Form.Group>
-                    <Form.Group id = "modal-form-group">
-                        <Form.Label id = "password-form">Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="!.LkMn87/"
-                            onChange={(e) => setPassword(e.target.value)} 
-                        />
-                    </Form.Group>
-                </Form>
-                <p id= "register-area">Register</p>
-            </Modal.Body>
+                <Modal.Body id = "modal-body">
+                    <p id= "error-area">{errorMessage}</p>
+                    <Form id = "form-body" >
+                        <Form.Group id = "modal-form-group">
+                            <Form.Label id = "email-adress-form">Email address</Form.Label>
+                            <Form.Control
+                                id = "form-control-email"
+                                type="email"
+                                placeholder="name@example.com"  
+                                onChange={(e) => setEmail(e.target.value)}    
+                            />
+                        </Form.Group>
+                        <Form.Group id = "modal-form-group">
+                            <Form.Label id = "password-form">Password</Form.Label>
+                            <Form.Control
+                                id = "form-control-password"
+                                type="password"
+                                placeholder="!.LkMn87/"
+                                onChange={(e) => setPassword(e.target.value)} 
+                            />
+                        </Form.Group>
+                    </Form>
+                    <label id= "register-area">Register</label>
+                </Modal.Body>
 
-            <Modal.Footer id = "modal-footer">
-                <Button id = "button-login" onClick={() => handleLogin()}>Login</Button>
-                <Button id = "button-close" onClick={() => handleClose()}>Close</Button>
-            </Modal.Footer>
-                
-        </Modal>
+                <Modal.Footer id = "modal-footer">
+                    <Button id = "button-login" onClick={() => handleLogin()}>Login</Button>
+                    <Button id = "button-close" onClick={() => handleClose()}>Close</Button>
+                </Modal.Footer>
+                    
+            </Modal>
+        </div>
 
     );
 

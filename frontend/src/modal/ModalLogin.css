@@ -10,18 +10,34 @@
 #error-area,
 #register-area,
 #modal-form-group{
+    background-color: #350C40;
+    color: white;
+}
+
+.modal-login-content{
+    background-color: #350C40;   
+}
+
+#form-control-email,
+#form-control-password{
     background-color: white;
+    color: black;
+}
+
+#password-form{
+    padding-top: 10px;
 }
 
 #error-area{
     padding: 2px;
-    color: red;
+    color: #A192A6;
 }
 
 #register-area{
-    padding-top: 5px;
+    display: block;
+    padding-top: 10px;
     text-align: right;
-    color: black;
+    color: white;
     text-decoration: underline;
     transition: 250ms;
     transition-timing-function: linear;
@@ -29,8 +45,8 @@
 
 #button-login,
 #button-close{
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: #200726;
     border: none;
     transition: 250ms;
     transition-timing-function: linear;
@@ -38,11 +54,11 @@
 
 #button-close:hover,
 #button-login:hover{
-    background-color: rgb(62, 18, 104);
+    background-color: #A192A6;
 }
 
 #register-area:hover{
-    color: rgb(62, 18, 104);
+    color: #A192A6;
 }
 
 
