@@ -49,13 +49,13 @@ public class PageController {
         String response_validate_user = newUser.validateUser();
 
         if(!response_validate_user.equals(Utils.SUCESS_REQUEST)){
-            return ResponseEntity.badRequest().body(response_validate_user);
+            return ResponseEntity.ok().body(response_validate_user);
         }
 
         boolean isUserExist = BDOperations.isUserExist(userRepository, newUser);
 
         if(isUserExist){
-            return ResponseEntity.badRequest().body("User exist in system");
+            return ResponseEntity.ok().body("User exist in system");
         }
 
         BDOperations.saveNewUser(userRepository, newUser);

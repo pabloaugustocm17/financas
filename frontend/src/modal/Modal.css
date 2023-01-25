@@ -24,7 +24,9 @@
     color: black;
 }
 
-#password-form{
+#password-form, 
+#email-adress-form, 
+#birthdate-form{
     padding-top: 10px;
 }
 

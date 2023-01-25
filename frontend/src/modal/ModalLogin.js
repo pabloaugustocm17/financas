@@ -1,10 +1,13 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { CloseButton } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import "./ModalLogin.css";
-import RealizeLogin from '../service/RealizeLogin';
+import "./Modal.css";
+import {RealizeLogin} from '../service/RealizeLogin';
 import LoadBD from '../service/BDService';
 import React, {useState} from 'react';
+import ModalRegister from './ModalRegister';
+
 
 async function login(email, password){
 
@@ -20,6 +23,7 @@ const ModalLogin = (props) => {
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[errorMessage, setErrorMessage] = useState("");
+    const [modalRegisterShow, setModalRegisterShow] = useState(false);
 
     const handleLogin = async () =>{
         
@@ -48,6 +52,11 @@ const ModalLogin = (props) => {
 
     }
 
+    const handleCloseRegister = () => {
+        handleClose();
+        setModalRegisterShow(true);
+    }
+
     return (
         
         <div className='ModalLogin'>
@@ -61,8 +70,10 @@ const ModalLogin = (props) => {
             centered
             >
                 <Modal.Header
-                id = "modal-header">
+                id = "modal-header"
+                >
                     <Modal.Title id = "modal-title">Login</Modal.Title>
+                    <CloseButton variant='white' onClick={() => handleClose()}></CloseButton>
                 </Modal.Header>
 
                 <Modal.Body id = "modal-body">
@@ -87,7 +98,7 @@ const ModalLogin = (props) => {
                             />
                         </Form.Group>
                     </Form>
-                    <label id= "register-area">Register</label>
+                    <label id= "register-area" onClick={() => handleCloseRegister()}>Register</label>
                 </Modal.Body>
 
                 <Modal.Footer id = "modal-footer">
@@ -96,6 +107,13 @@ const ModalLogin = (props) => {
                 </Modal.Footer>
                     
             </Modal>
+
+            <ModalRegister
+                 show = {modalRegisterShow}
+                 onHide = {() => setModalRegisterShow(false)}
+            >
+            </ModalRegister>
+            
         </div>
 
     );

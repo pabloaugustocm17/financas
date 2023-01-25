@@ -35,7 +35,7 @@ public class Utils {
     public static String validatePassword(String password){
 
         if(password.length() < 8){
-            return "Password have 8 characters";
+            return "Password dont have 8 characters";
         }
 
         char[] password_char = password.toCharArray();

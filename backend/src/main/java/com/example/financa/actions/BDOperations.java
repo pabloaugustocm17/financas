@@ -48,7 +48,7 @@ public class BDOperations {
     }
     public static boolean isUserExist(UserRepository userRepository, User user){
 
-        return userRepository.isUserExist(user.getEmail()) == null;
+        return !(userRepository.isUserExist(user.getEmail()) == null);
 
     }
 }
