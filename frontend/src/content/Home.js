@@ -1,21 +1,22 @@
 import { Col, Container, Row } from "react-bootstrap";
-import './Home.css';
+import './Contents.css';
+import img from '../resources/img1.png'
 
 const Home = () =>{
 
     const text = ' This is a home page';
 
     return (
-        <div className="Home">
+        <div className = "Home">
 
             <Container>
                 <Row>
                     <Col sm = {12} md = {8} lg = {6} id = "col-img-home">
                         {/* Image sm=12*/}
-                        <p id = "img-home" >Img</p>
+                        <img src={img} alt = 'img'/>
                     </Col>
 
-                    <Col lg = {6} md = {4} id = "col-text-home">
+                    <Col sm = {12} lg = {6} md = {4} id = "col-text-home">
                         {/* Informations about home */}
                         <p id= "text-home">{text}</p>
                     </Col>

@@ -1,0 +1,19 @@
+.Content{
+    padding-top: 3%;
+}
+
+.Home{
+    padding-bottom: 3%;
+}
+
+#img-home,
+#text-home, 
+#text-details{
+    color: white;
+}
+
+#col-img-home,
+#col-text-home, 
+#col-text-details{
+    text-align: center;
+}
