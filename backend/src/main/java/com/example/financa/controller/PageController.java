@@ -4,6 +4,7 @@ import com.example.financa.actions.BDOperations;
 import com.example.financa.actions.Utils;
 import com.example.financa.dtos.LoginDTO;
 import com.example.financa.entities.User;
+import com.example.financa.repository.TokenRepository;
 import com.example.financa.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,9 +18,11 @@ import org.springframework.http.ResponseEntity;
 public class PageController {
 
     private final UserRepository userRepository;
+    private final TokenRepository tokenRepository;
 
-    public PageController(UserRepository userRepository){
+    public PageController(UserRepository userRepository, TokenRepository tokenRepository){
         this.userRepository = userRepository;
+        this.tokenRepository = tokenRepository;
     }
 
     @PostMapping("/login")
@@ -56,7 +59,9 @@ public class PageController {
             return ResponseEntity.ok().body("User exist in system");
         }
 
-        BDOperations.saveNewUser(userRepository, newUser);
+        newUser.createToken();
+
+        BDOperations.saveNewUser(userRepository, tokenRepository, newUser);
 
         return ResponseEntity.ok().body(Utils.SUCESS_REQUEST);
 

@@ -2,6 +2,7 @@ package com.example.financa.actions;
 
 import com.example.financa.entities.User;
 import com.example.financa.factory.Factorys;
+import com.example.financa.repository.TokenRepository;
 import com.example.financa.repository.UserRepository;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 @Component
 public class BDOperations {
 
-    public static void loadBD(UserRepository userRepository){
+    public static void loadBD(UserRepository userRepository, TokenRepository tokenRepository){
 
         try {
 
@@ -24,6 +25,7 @@ public class BDOperations {
 
                 User user = (User) Factorys.userFactory.createByLine(line);
 
+                tokenRepository.save(user.getTokenUser());
                 userRepository.save(user);
 
             }
@@ -41,8 +43,9 @@ public class BDOperations {
         }
 
     }
-    public static void saveNewUser(UserRepository userRepository, User newUser){
+    public static void saveNewUser(UserRepository userRepository, TokenRepository tokenRepository ,User newUser){
 
+        tokenRepository.save(newUser.getTokenUser());
         userRepository.save(newUser);
 
     }

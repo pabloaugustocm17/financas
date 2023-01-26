@@ -41,9 +41,9 @@ public class User{
         this.email = email;
         this.password = password;
         this.name = name;
-        this.value_account = 0;
+        this.value_account = value_account;
         this.birth_date = birth_date;
-        this.tokenUser = new TokenUser(this.birth_date);
+        createToken();
     }
 
     /* Constructors */
@@ -58,11 +58,14 @@ public class User{
 
     public User(Long id, String email, String password, String name, double value_account, LocalDate birth_date){
         this.id = id;
-        init(email, password, name, value_account,birth_date);
+        init(email, password, name, value_account, birth_date);
     }
 
     /* Validates */
 
+    public void createToken(){
+        this.tokenUser = new TokenUser(this.birth_date);
+    }
     public String validateUser(){
 
         if(this.name == null || this.name.isBlank() || this.name.isEmpty()){
