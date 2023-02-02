@@ -1,10 +1,10 @@
 import { Col, Container, Row } from "react-bootstrap";
 import './Contents.css';
-import img from '../resources/img1.png'
+import img from '../resources/img.png'
 
 const Home = () =>{
 
-    const text = ' This is a home page';
+    const text = ' This is a page created for study purposes only, showing some application knowledge of React and SpringBoot';
 
     return (
         <div className = "Home">
@@ -12,7 +12,7 @@ const Home = () =>{
             <Container>
                 <Row>
                     <Col sm = {12} md = {8} lg = {6} id = "col-img-home">
-                        {/* Image sm=12*/}
+                        {/* Image */}
                         <img src={img} alt = 'img'/>
                     </Col>
 

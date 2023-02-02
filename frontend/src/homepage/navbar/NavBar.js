@@ -13,13 +13,10 @@ const NavBar = () => {
         <div className='NavBar'>
             <Container>
                 <Row>
-                    <Col lg={4} md = {4} sm = {12}  id="col-pattern">
-                        <a href = "#" id="text-pattern">Home</a>
+                    <Col lg={6} md = {6} sm = {12}  id="col-pattern">
+                        <a id="text-pattern">Home</a>
                     </Col>
-                    <Col lg={4} md = {4} sm = {12} id = "col-pattern">
-                        <a href = "#" id="text-pattern">Details</a>
-                    </Col>
-                    <Col lg={4} md = {4} sm = {12} id = "col-pattern">
+                    <Col lg={6} md = {6} sm = {12} id = "col-pattern">
                         <a id="text-pattern" href="#" onClick={() => setModalShow(true)}>Login</a>
                     </Col>
                 </Row>
