@@ -27,21 +27,19 @@ public class User{
 
     private String name;
 
-    private double value_account;
-
     private LocalDate birth_date;
 
+    /* Relationship */
     @OneToOne
     private TokenUser tokenUser;
 
 
     /* Init */
 
-    public void init(String email, String password, String name, double value_account ,LocalDate birth_date){
+    public void init(String email, String password, String name ,LocalDate birth_date){
         this.email = email;
         this.password = password;
         this.name = name;
-        this.value_account = value_account;
         this.birth_date = birth_date;
         createToken();
     }
@@ -49,16 +47,16 @@ public class User{
     /* Constructors */
 
     public User(String email, String password, String name, String birth_date){
-        init(email, password, name, 0, Utils.stringToLocalDate(birth_date));
+        init(email, password, name, Utils.stringToLocalDate(birth_date));
     }
 
     public User(String email, String password, String name, LocalDate birth_date){
-        init(email, password, name,0, birth_date);
+        init(email, password, name, birth_date);
     }
 
-    public User(Long id, String email, String password, String name, double value_account, LocalDate birth_date){
+    public User(Long id, String email, String password, String name, LocalDate birth_date){
         this.id = id;
-        init(email, password, name, value_account, birth_date);
+        init(email, password, name, birth_date);
     }
 
     /* Validates */

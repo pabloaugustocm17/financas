@@ -23,10 +23,9 @@ public class UserFactory implements Factory {
         String email = args[1];
         String password = args[2];
         String name = args[3];
-        double value_account = Double.parseDouble(args[4]);
-        LocalDate birth_date = Utils.stringToLocalDate(args[5]);
+        LocalDate birth_date = Utils.stringToLocalDate(args[4]);
 
-        return new User(id, email, password, name, value_account, birth_date);
+        return new User(id, email, password, name, birth_date);
 
     }
 }
