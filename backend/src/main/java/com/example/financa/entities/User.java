@@ -64,33 +64,5 @@ public class User{
     public void createToken(){
         this.tokenUser = new TokenUser(this.birth_date);
     }
-    public String validateUser(){
 
-        if(this.name == null || this.name.isBlank() || this.name.isEmpty()){
-            return "Name blank";
-        }
-
-        String response_validate_email = Utils.validateEmail(this.email);
-
-        if(!response_validate_email.equals(Utils.SUCESS_REQUEST)){
-            return response_validate_email;
-        }
-
-        String response_validate_password = Utils.validatePassword(this.password);
-
-        if(!response_validate_password.equals(Utils.SUCESS_REQUEST)){
-            return response_validate_password;
-        }
-
-        if(this.birth_date == null){
-            return "Birth date is null";
-        }else{
-            if(LocalDate.now().getYear() - this.birth_date.getYear() < 18 ){
-                return "You need 18 years to register";
-            }
-        }
-
-        return Utils.SUCESS_REQUEST;
-
-    }
 }
