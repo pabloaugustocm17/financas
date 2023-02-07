@@ -1,6 +1,5 @@
 package com.example.financa.controller;
 
-import com.example.financa.actions.BDOperations;
 import com.example.financa.actions.Utils;
 import com.example.financa.dtos.LoginDTO;
 import com.example.financa.entities.User;
@@ -17,13 +16,10 @@ import org.springframework.http.ResponseEntity;
 @Controller
 public class PageController {
 
-    private final UserService userService;
-
-    private final TokenService tokenService;
+    private final UserService user_service;
 
     public PageController(UserService userService, TokenService tokenService) {
-        this.userService = userService;
-        this.tokenService = tokenService;
+        this.user_service = userService;
     }
 
 
@@ -36,7 +32,7 @@ public class PageController {
             return ResponseEntity.ok().body(response_validate_email);
         }
 
-        boolean login = userService.loginUser(logindto.getEmail(), logindto.getPassword());
+        boolean login = user_service.loginUser(logindto.getEmail(), logindto.getPassword());
 
         if(!login){
             return ResponseEntity.ok().body("Email or password incorrect");
@@ -55,7 +51,7 @@ public class PageController {
             return ResponseEntity.ok().body(response_validate_user);
         }
 
-        boolean isUserExist = BDOperations.isUserExist(userService, newUser);
+        boolean isUserExist = user_service.isUserExist(newUser.getEmail());
 
         if(isUserExist){
             return ResponseEntity.ok().body("User exist in system");
@@ -63,7 +59,7 @@ public class PageController {
 
         newUser.createToken();
 
-        BDOperations.saveNewUser(userService, tokenService, newUser);
+        user_service.saveUser(newUser);
 
         return ResponseEntity.ok().body(Utils.SUCESS_REQUEST);
 

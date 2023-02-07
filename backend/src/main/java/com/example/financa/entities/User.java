@@ -30,8 +30,8 @@ public class User{
     private LocalDate birth_date;
 
     /* Relationship */
-    @OneToOne
-    private TokenUser tokenUser;
+    @OneToOne(optional = false)
+    private TokenUser tokne_user;
 
 
     /* Init */
@@ -62,7 +62,7 @@ public class User{
     /* Validates */
 
     public void createToken(){
-        this.tokenUser = new TokenUser(this.birth_date);
+        this.tokne_user = new TokenUser(this.birth_date);
     }
 
 }

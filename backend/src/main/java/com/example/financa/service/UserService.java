@@ -10,10 +10,10 @@ import java.time.LocalDate;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final UserRepository user_repository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(UserRepository user_repository) {
+        this.user_repository = user_repository;
     }
 
     public static String validateUser(User user){
@@ -52,12 +52,12 @@ public class UserService {
     }
 
     public void saveUser(User user){
-        userRepository.save(user);
+        user_repository.save(user);
     }
 
     public boolean isUserExist(String email){
 
-        String response = userRepository.isUserExist(email);
+        String response = user_repository.isUserExist(email);
 
         return (response != null);
 
@@ -65,13 +65,13 @@ public class UserService {
 
     public boolean loginUser(String email, String password){
 
-        Long id = userRepository.loginUser(email, password);
+        Long id = user_repository.loginUser(email, password);
 
         return id != null;
 
     }
 
     public User returnUserById(Long id_user){
-        return userRepository.findUserById(id_user);
+        return user_repository.findUserById(id_user);
     }
 }

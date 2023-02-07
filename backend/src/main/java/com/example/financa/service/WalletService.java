@@ -9,17 +9,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class WalletService {
 
-    private final WalletRepository walletRepository;
+    private final WalletRepository wallet_repository;
 
-    public WalletService(WalletRepository walletRepository) {
-        this.walletRepository = walletRepository;
+    public WalletService(WalletRepository wallet_repository) {
+        this.wallet_repository = wallet_repository;
     }
 
     public Wallet createWallet(User user){
 
         Wallet wallet = Factorys.WALLET_FACTORY.create(user);
 
-        return walletRepository.save(wallet);
+        return wallet_repository.save(wallet);
 
 
     }
@@ -27,7 +27,7 @@ public class WalletService {
 
         Wallet wallet = Factorys.WALLET_FACTORY.create(name_wallet, user);
 
-        return walletRepository.save(wallet);
+        return wallet_repository.save(wallet);
 
 
     }

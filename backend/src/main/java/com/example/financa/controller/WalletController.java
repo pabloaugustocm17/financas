@@ -14,13 +14,13 @@ import java.util.HashMap;
 @RestController
 public class WalletController {
 
-    private final UserService userService;
-    private final WalletService walletService;
+    private final UserService user_service;
+    private final WalletService wallet_service;
 
-    public WalletController(UserService userService,
-                            WalletService walletService){
-        this.userService = userService;
-        this.walletService = walletService;
+    public WalletController(UserService user_service,
+                            WalletService wallet_service){
+        this.user_service = user_service;
+        this.wallet_service = wallet_service;
     }
 
     @PostMapping("/api/createWallet/{id_user}")
@@ -28,14 +28,14 @@ public class WalletController {
 
         HashMap<String, Object> json_return = new HashMap<>();
 
-        User response = userService.returnUserById(id_user);
+        User response = user_service.returnUserById(id_user);
 
         if(response == null){
             json_return.put("error", "user no exist");
             return ResponseEntity.badRequest().body(json_return);
         }
 
-        Wallet wallet = walletService.createWallet(response);
+        Wallet wallet = wallet_service.createWallet(response);
 
         json_return.put("wallet", wallet.toString());
 
@@ -48,14 +48,14 @@ public class WalletController {
 
         HashMap<String, Object> json_return = new HashMap<>();
 
-        User response = userService.returnUserById(id_user);
+        User response = user_service.returnUserById(id_user);
 
         if(response == null){
             json_return.put("error", "user no exist");
             return ResponseEntity.badRequest().body(json_return);
         }
 
-        Wallet wallet = walletService.createWallet(name_wallet, response);
+        Wallet wallet = wallet_service.createWallet(name_wallet, response);
 
         json_return.put("wallet", wallet.toString());
 
