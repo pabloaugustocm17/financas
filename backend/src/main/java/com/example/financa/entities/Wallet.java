@@ -32,4 +32,9 @@ public class Wallet {
         this.name_wallet = name_wallet;
         this.user = user;
     }
+
+    public Wallet(Long id, String name_wallet){
+        this.id = id;
+        this.name_wallet = name_wallet;
+    }
 }

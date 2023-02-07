@@ -11,7 +11,13 @@ public class WalletFactory implements Factory{
 
     @Override
     public Object createByLine(String line) {
-        return null;
+
+        String[] args = line.split(";");
+
+        Long id = Long.valueOf(args[1]);
+        String name_wallet = args[2];
+
+        return new Wallet(id, name_wallet);
     }
 
     public Wallet create(User user){

@@ -7,6 +7,8 @@ import java.time.LocalDate;
 
 public class Utils {
 
+    /* Methods */
+
     public static final String SUCESS_REQUEST = "200";
 
     public static LocalDate stringToLocalDate(String date){

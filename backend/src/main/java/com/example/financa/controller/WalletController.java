@@ -16,28 +16,34 @@ import java.util.HashMap;
 @CrossOrigin(origins = "http://localhost:3000")
 public class WalletController {
 
-    private final UserService user_service;
-    private final WalletService wallet_service;
+    private final UserService USER_SERVICE;
 
-    public WalletController(UserService user_service,
-                            WalletService wallet_service){
-        this.user_service = user_service;
-        this.wallet_service = wallet_service;
+    private final WalletService WALLET_SERVICE;
+
+
+    /* Constructor */
+
+    public WalletController(UserService USER_SERVICE,
+                            WalletService WALLET_SERVICE){
+        this.USER_SERVICE = USER_SERVICE;
+        this.WALLET_SERVICE = WALLET_SERVICE;
     }
+
+    /* Requests */
 
     @PostMapping("/api/createWallet/{id_user}")
     public ResponseEntity<?> createWallet(@PathVariable Long id_user){
 
         HashMap<String, Object> json_return = new HashMap<>();
 
-        User response = user_service.returnUserById(id_user);
+        User response = USER_SERVICE.returnUserById(id_user);
 
         if(response == null){
             json_return.put("error", "user no exist");
             return ResponseEntity.badRequest().body(json_return);
         }
 
-        Wallet wallet = wallet_service.createWallet(response);
+        Wallet wallet = WALLET_SERVICE.createWallet(response);
 
         json_return.put("wallet", wallet.toString());
 
@@ -50,14 +56,14 @@ public class WalletController {
 
         HashMap<String, Object> json_return = new HashMap<>();
 
-        User response = user_service.returnUserById(id_user);
+        User response = USER_SERVICE.returnUserById(id_user);
 
         if(response == null){
             json_return.put("error", "user no exist");
             return ResponseEntity.badRequest().body(json_return);
         }
 
-        Wallet wallet = wallet_service.createWallet(name_wallet, response);
+        Wallet wallet = WALLET_SERVICE.createWallet(name_wallet, response);
 
         json_return.put("wallet", wallet.toString());
 

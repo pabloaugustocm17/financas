@@ -20,17 +20,23 @@ public class TokenUser {
 
     @Id
     private String token;
+
     private LocalDate last_acess;
+
+    /* Constructor */
 
     public TokenUser(LocalDate birth_date){
         this.token = TokenService.generateToken(birth_date);
     }
+
+    /* Methods */
 
     public void updateLastAcess(LocalDate new_acess){
         if(new_acess.getDayOfYear() != LocalDate.now().getDayOfYear()){
             this.last_acess = new_acess;
         }
     }
+
     public boolean validadeToken(String token_acess){
 
         if(this.token.equals(token_acess)){

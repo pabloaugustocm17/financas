@@ -12,9 +12,13 @@ public class WalletService {
     private final WalletFactory WALLET_FACTORY = new WalletFactory();
     private final WalletRepository wallet_repository;
 
+    /* Constructor */
+
     public WalletService(WalletRepository wallet_repository) {
         this.wallet_repository = wallet_repository;
     }
+
+    /* Methods */
 
     public Wallet createWallet(User user){
 
@@ -24,6 +28,7 @@ public class WalletService {
 
 
     }
+
     public Wallet createWallet(String name_wallet, User user){
 
         Wallet wallet = WALLET_FACTORY.create(name_wallet, user);
@@ -31,5 +36,9 @@ public class WalletService {
         return wallet_repository.save(wallet);
 
 
+    }
+
+    public void saveWallet(Wallet wallet){
+        wallet_repository.save(wallet);
     }
 }

@@ -2,9 +2,11 @@ package com.example.financa.actions;
 
 import com.example.financa.entities.TokenUser;
 import com.example.financa.entities.User;
+import com.example.financa.entities.Wallet;
 import com.example.financa.factory.Factories;
 import com.example.financa.service.TokenService;
 import com.example.financa.service.UserService;
+import com.example.financa.service.WalletService;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
@@ -18,13 +20,17 @@ import java.util.Scanner;
 @Component
 public class BDOperations {
 
-    private final DataSource data_source;
+    private final DataSource DATA_SOURCE;
+
+    /* Constructor */
 
     public BDOperations(DataSource dataSource) {
-        this.data_source = dataSource;
+        this.DATA_SOURCE = dataSource;
     }
 
-    public static void loadBD(UserService user_service, TokenService token_service){
+    /* Methods */
+
+    public static void loadBD(UserService user_service, TokenService token_service, WalletService walletService){
 
         try {
 
@@ -42,6 +48,7 @@ public class BDOperations {
 
                     case "user" -> user_service.saveUser((User) object);
                     case "token" -> token_service.saveToken((TokenUser) object);
+                    case "wallet" -> walletService.saveWallet((Wallet) object);
 
                 }
 
@@ -54,10 +61,12 @@ public class BDOperations {
 
     public static void saveDB(){
 
-
+        //GET ALL data and save in a txt
 
 
     }
+
+    /* Not used */
 
     @EventListener(ApplicationStartedEvent.class)
     public void executeSqlFileOnAppLoad(){
@@ -69,7 +78,7 @@ public class BDOperations {
         ResourceDatabasePopulator resource_db_schema = new ResourceDatabasePopulator
                     (false, false, "UTF-8", sql);
 
-        resource_db_schema.execute(data_source);
+        resource_db_schema.execute(DATA_SOURCE);
 
     }
 }

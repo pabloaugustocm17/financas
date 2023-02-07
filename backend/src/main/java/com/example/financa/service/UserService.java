@@ -12,14 +12,19 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final UserRepository user_repository;
+    private final UserRepository USER_REPOSITORY;
 
-    private final TokenRepository token_repository;
+    private final TokenRepository TOKEN_REPOSITORY;
 
-    public UserService(UserRepository user_repository, TokenRepository token_repository) {
-        this.user_repository = user_repository;
-        this.token_repository = token_repository;
+    /* Constructor */
+
+    public UserService(UserRepository USER_REPOSITORY, TokenRepository TOKEN_REPOSITORY) {
+        this.USER_REPOSITORY = USER_REPOSITORY;
+        this.TOKEN_REPOSITORY = TOKEN_REPOSITORY;
     }
+
+
+    /* Methods */
 
     public static String validateUser(User user){
 
@@ -57,13 +62,13 @@ public class UserService {
     }
 
     public void saveUser(User user){
-        token_repository.save(user.getTokne_user());
-        user_repository.save(user);
+        TOKEN_REPOSITORY.save(user.getTokne_user());
+        USER_REPOSITORY.save(user);
     }
 
     public boolean isUserExist(String email){
 
-        String response = user_repository.isUserExist(email);
+        String response = USER_REPOSITORY.isUserExist(email);
 
         return (response != null);
 
@@ -71,17 +76,17 @@ public class UserService {
 
     public boolean loginUser(String email, String password){
 
-        Long id = user_repository.loginUser(email, password);
+        Long id = USER_REPOSITORY.loginUser(email, password);
 
         return id != null;
 
     }
 
     public User returnUserById(Long id_user){
-        return user_repository.findUserById(id_user);
+        return USER_REPOSITORY.findUserById(id_user);
     }
 
     public List<User> listAllUser(){
-        return user_repository.findAll();
+        return USER_REPOSITORY.findAll();
     }
 }

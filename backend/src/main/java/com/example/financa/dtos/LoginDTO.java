@@ -13,7 +13,10 @@ import org.springframework.stereotype.Component;
 public class LoginDTO {
 
     private String email;
+
     private String password;
+
+    /* Methods */
 
     public String validateEmail(){
 

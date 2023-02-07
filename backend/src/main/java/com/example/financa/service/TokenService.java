@@ -9,11 +9,15 @@ import java.time.LocalDate;
 @Service
 public class TokenService {
 
-    private final TokenRepository token_repository;
+    private final TokenRepository TOKEN_REPOSITORY;
 
-    public TokenService(TokenRepository token_repository) {
-        this.token_repository = token_repository;
+    /* Constructor */
+
+    public TokenService(TokenRepository TOKEN_REPOSITORY) {
+        this.TOKEN_REPOSITORY = TOKEN_REPOSITORY;
     }
+
+    /* Methods */
 
     public static String generateToken(LocalDate birth_date){
 
@@ -32,7 +36,7 @@ public class TokenService {
     }
 
     public void saveToken(TokenUser tokenUser){
-        token_repository.save(tokenUser);
+        TOKEN_REPOSITORY.save(tokenUser);
     }
 
 }

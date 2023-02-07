@@ -3,7 +3,6 @@ package com.example.financa.controller;
 import com.example.financa.actions.Utils;
 import com.example.financa.dtos.LoginDTO;
 import com.example.financa.entities.User;
-import com.example.financa.service.TokenService;
 import com.example.financa.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,12 +15,15 @@ import org.springframework.http.ResponseEntity;
 @Controller
 public class PageController {
 
-    private final UserService user_service;
+    private final UserService USER_SERVICE;
 
-    public PageController(UserService userService, TokenService tokenService) {
-        this.user_service = userService;
+    /* Constructor */
+
+    public PageController(UserService userService) {
+        this.USER_SERVICE = userService;
     }
 
+    /* Requests */
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO logindto){
@@ -32,7 +34,7 @@ public class PageController {
             return ResponseEntity.ok().body(response_validate_email);
         }
 
-        boolean login = user_service.loginUser(logindto.getEmail(), logindto.getPassword());
+        boolean login = USER_SERVICE.loginUser(logindto.getEmail(), logindto.getPassword());
 
         if(!login){
             return ResponseEntity.ok().body("Email or password incorrect");
@@ -51,7 +53,7 @@ public class PageController {
             return ResponseEntity.ok().body(response_validate_user);
         }
 
-        boolean isUserExist = user_service.isUserExist(newUser.getEmail());
+        boolean isUserExist = USER_SERVICE.isUserExist(newUser.getEmail());
 
         if(isUserExist){
             return ResponseEntity.ok().body("User exist in system");
@@ -59,7 +61,7 @@ public class PageController {
 
         newUser.createToken();
 
-        user_service.saveUser(newUser);
+        USER_SERVICE.saveUser(newUser);
 
         return ResponseEntity.ok().body(Utils.SUCESS_REQUEST);
 
