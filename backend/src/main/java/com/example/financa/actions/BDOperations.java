@@ -1,7 +1,8 @@
 package com.example.financa.actions;
 
+import com.example.financa.entities.TokenUser;
 import com.example.financa.entities.User;
-import com.example.financa.factory.Factorys;
+import com.example.financa.factory.Factories;
 import com.example.financa.service.TokenService;
 import com.example.financa.service.UserService;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -27,16 +28,22 @@ public class BDOperations {
 
         try {
 
-            Scanner loader = new Scanner(new ClassPathResource("/bd/settings.txt").getFile());
+            Scanner loader = new Scanner(new ClassPathResource("/db/db.txt").getFile());
 
             while (loader.hasNextLine()){
 
                 String line = loader.nextLine();
+                String[] split = line.split(";");
+                String type = split[0];
 
-                User user = (User) Factorys.USER_FACTORY.createByLine(line);
+                Object object = Factories.createObject(line, type);
 
-                token_service.saveToken(user.getTokenUser());
-                user_service.saveUser(user);
+                switch (type){
+
+                    case "user" -> user_service.saveUser((User) object);
+                    case "token" -> token_service.saveToken((TokenUser) object);
+
+                }
 
             }
         } catch (IOException e) {
@@ -45,12 +52,19 @@ public class BDOperations {
 
     }
 
+    public static void saveDB(){
+
+
+
+
+    }
+
     @EventListener(ApplicationStartedEvent.class)
     public void executeSqlFileOnAppLoad(){
 
         System.out.println("ENTER IN LOAD");
 
-        ClassPathResource sql = new ClassPathResource("/bd/createSchema.sql");
+        ClassPathResource sql = new ClassPathResource("/db/createSchema.sql");
 
         ResourceDatabasePopulator resource_db_schema = new ResourceDatabasePopulator
                     (false, false, "UTF-8", sql);

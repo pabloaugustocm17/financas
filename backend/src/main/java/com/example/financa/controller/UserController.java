@@ -2,11 +2,13 @@ package com.example.financa.controller;
 
 import com.example.financa.actions.BDOperations;
 import com.example.financa.entities.User;
-import com.example.financa.repository.TokenRepository;
-import com.example.financa.repository.UserRepository;
 import com.example.financa.service.TokenService;
 import com.example.financa.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -21,8 +23,29 @@ public class UserController {
     }
 
     @RequestMapping("/loadBD")
-    private void loadBdByRequest(){
+    private void loadDBByRequest(){
         BDOperations.loadBD(this.user_service, this.token_service);
+    }
+
+    @RequestMapping("/api/listAllUser")
+    private ResponseEntity<?> listAllUsers(){
+
+        HashMap<String, User> hash_users = new HashMap<>();
+
+        List<User> users = user_service.listAllUser();
+
+        if(users.isEmpty()){
+            return ResponseEntity.badRequest().body("No users in system");
+        }
+
+        users.forEach(user -> {
+
+            hash_users.put(user.getName(), user);
+
+        });
+
+        return ResponseEntity.ok(hash_users);
+
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.financa.entities.Wallet;
 import com.example.financa.service.UserService;
 import com.example.financa.service.WalletService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class WalletController {
 
     private final UserService user_service;

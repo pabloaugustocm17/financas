@@ -2,18 +2,23 @@ package com.example.financa.service;
 
 import com.example.financa.actions.Utils;
 import com.example.financa.entities.User;
+import com.example.financa.repository.TokenRepository;
 import com.example.financa.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class UserService {
 
     private final UserRepository user_repository;
 
-    public UserService(UserRepository user_repository) {
+    private final TokenRepository token_repository;
+
+    public UserService(UserRepository user_repository, TokenRepository token_repository) {
         this.user_repository = user_repository;
+        this.token_repository = token_repository;
     }
 
     public static String validateUser(User user){
@@ -52,6 +57,7 @@ public class UserService {
     }
 
     public void saveUser(User user){
+        token_repository.save(user.getTokne_user());
         user_repository.save(user);
     }
 
@@ -73,5 +79,9 @@ public class UserService {
 
     public User returnUserById(Long id_user){
         return user_repository.findUserById(id_user);
+    }
+
+    public List<User> listAllUser(){
+        return user_repository.findAll();
     }
 }

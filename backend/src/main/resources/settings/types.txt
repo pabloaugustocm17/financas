@@ -1,0 +1,2 @@
+user;com.example.financa.factory.UserFactory
+wallet;com.example.financa.factory.WalletFactory

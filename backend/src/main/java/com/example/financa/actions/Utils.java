@@ -1,5 +1,8 @@
 package com.example.financa.actions;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.LocalDate;
 
 public class Utils {
@@ -86,4 +89,66 @@ public class Utils {
         return SUCESS_REQUEST;
     }
 
+    /* Metadata and Reflection */
+
+    public static Class<?> getClassByName(String name_class){
+
+        try {
+            return Class.forName(name_class);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Class '" + name_class + "' no exist");
+        }
+
+    }
+
+    public static Method getMethodByName(String name, Class<?> clas){
+
+        for(Method method : clas.getMethods()){
+
+            if(method.getName().equals(name)){
+
+                return method;
+            }
+        }
+
+        return null;
+
+    }
+
+    public static Object invokeMethodFactory(Object instance, Method method, Object... args){
+
+        try {
+            return method.invoke(instance, args);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException("Error in invoke method: " + method.getName());
+        }
+
+
+    }
+
+    public static Object initializeClass(Class<?> clas){
+
+        Constructor<?>[] constructors = clas.getConstructors();
+        Constructor<?> constructor_empty = null;
+
+        for(Constructor<?> constructor : constructors){
+            if(constructor.getParameterCount() == 0){
+                constructor_empty = constructor;
+            }
+        }
+
+        if(constructor_empty == null){
+            throw new RuntimeException("Class: " + clas.getSimpleName() + " dont have a constructor with no parameters");
+        }
+
+        try {
+
+            return constructor_empty.newInstance();
+
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException("Error in instance a object of class: " + clas.getSimpleName());
+        }
+
+
+    }
 }

@@ -19,11 +19,11 @@ public class UserFactory implements Factory {
 
         String[] args = line.split(";");
 
-        Long id = Long.valueOf(args[0]);
-        String email = args[1];
-        String password = args[2];
-        String name = args[3];
-        LocalDate birth_date = Utils.stringToLocalDate(args[4]);
+        Long id = Long.valueOf(args[1]);
+        String email = args[2];
+        String password = args[3];
+        String name = args[4];
+        LocalDate birth_date = Utils.stringToLocalDate(args[5]);
 
         return new User(id, email, password, name, birth_date);
 

@@ -1,0 +1,1 @@
+user;0;pablo@test.com;1234;pablo;2003-05-17
