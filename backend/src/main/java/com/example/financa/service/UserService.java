@@ -70,4 +70,8 @@ public class UserService {
         return id != null;
 
     }
+
+    public User returnUserById(Long id_user){
+        return userRepository.findUserById(id_user);
+    }
 }

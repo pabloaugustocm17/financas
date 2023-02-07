@@ -7,12 +7,12 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query(" SELECT u " +
+    @Query( "SELECT u " +
             "FROM User u " +
             "WHERE u.id = :id")
     User findUserById(@Param("id") Long id);
 
-    @Query(" SELECT u.id " +
+    @Query( "SELECT u.id " +
             "FROM User u " +
             "WHERE u.email = :email " +
             "AND u.password = :password")
@@ -23,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             "WHERE u.email = :email")
     String isUserExist(@Param("email") String email);
 
-    @Query(" SELECT u " +
+    @Query( "SELECT u " +
             "FROM User u " +
             "WHERE u.email = :email " +
             "AND u.password = :password")

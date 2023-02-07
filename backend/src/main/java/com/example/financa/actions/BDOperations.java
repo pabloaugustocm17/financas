@@ -33,7 +33,7 @@ public class BDOperations {
 
                 String line = loader.nextLine();
 
-                User user = (User) Factorys.userFactory.createByLine(line);
+                User user = (User) Factorys.USER_FACTORY.createByLine(line);
 
                 tokenRepository.save(user.getTokenUser());
                 userRepository.save(user);
