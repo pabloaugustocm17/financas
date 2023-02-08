@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.ResponseEntity;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -44,7 +43,7 @@ public class PageController {
 
     }
 
-    @RequestMapping("/registerNewUser")
+    @PostMapping("/registerNewUser")
     public ResponseEntity<?> registerNewUser(@RequestBody User newUser){
 
         String response_validate_user = UserService.validateUser(newUser);

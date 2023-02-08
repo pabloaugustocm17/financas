@@ -12,12 +12,14 @@ public class Utils {
     /* Methods */
 
     public static final String SUCESS_REQUEST = "200";
-    public static final String REGEX_NUMER =  "^\\d*\\.\\d+|\\d+\\.\\d*$";
+    public static final String REGEX_NUMBER_DECIMAL =  "^\\d*\\.\\d+|\\d+\\.\\d*$";
+
+    public static final String REGEX_NUMBER =  "\\d";
 
 
     public static double stringToDouble(String number){
 
-        if(verifyNumber(number)){
+        if(verifyNumber(number, "decimal")){
             return Double.parseDouble(number);
         }else{
             throw new ParseRuntimeException(number);
@@ -107,7 +109,7 @@ public class Utils {
 
     public static Long stringToLong(String number){
 
-        if(verifyNumber(number)){
+        if(verifyNumber(number, "integer")){
             return Long.valueOf(number);
         }else{
             throw new ParseRuntimeException(number);
@@ -115,8 +117,15 @@ public class Utils {
 
     }
 
-    public static boolean verifyNumber(String number){
-        return number.matches(REGEX_NUMER);
+    public static boolean verifyNumber(String number, String type){
+
+        if(type.equals("decimal")){
+            return number.matches(REGEX_NUMBER_DECIMAL);
+        }else{
+            return number.matches(REGEX_NUMBER);
+        }
+
+
     }
 
     /* Metadata and Reflection */

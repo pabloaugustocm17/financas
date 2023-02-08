@@ -51,4 +51,8 @@ public class WalletService {
         return wallet_repository.getAllWalletByUser(id_user);
 
     }
+
+    public boolean isWalletExist(Long id){
+        return (wallet_repository.isWalletExist(id) != null);
+    }
 }

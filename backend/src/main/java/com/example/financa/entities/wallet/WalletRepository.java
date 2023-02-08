@@ -17,6 +17,11 @@ public interface WalletRepository extends JpaRepository<Wallet, Long> {
             "WHERE user.id = :id")
     LinkedList<WalletDTO> getAllWalletByUser(@Param("id") Long id);
 
+    @Query( "SELECT wallet.id " +
+            "FROM Wallet wallet " +
+            "WHERE wallet.id = :id")
+    Long isWalletExist(@Param("id") Long id);
+
     Wallet getWalletById(Long id);
 
 }
