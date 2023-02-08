@@ -1,9 +1,7 @@
-package com.example.financa.service;
+package com.example.financa.entities.user;
 
 import com.example.financa.actions.Utils;
-import com.example.financa.entities.User;
-import com.example.financa.repository.TokenRepository;
-import com.example.financa.repository.UserRepository;
+import com.example.financa.entities.tokenuser.TokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -68,7 +66,15 @@ public class UserService {
 
     public boolean isUserExist(String email){
 
-        String response = USER_REPOSITORY.isUserExist(email);
+        Long response = USER_REPOSITORY.isUserExist(email);
+
+        return (response != null);
+
+    }
+
+    public boolean isUserExist(Long id){
+
+        Long response = USER_REPOSITORY.isUserExist(id);
 
         return (response != null);
 

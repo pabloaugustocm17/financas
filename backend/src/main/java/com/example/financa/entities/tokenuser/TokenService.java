@@ -1,7 +1,5 @@
-package com.example.financa.service;
+package com.example.financa.entities.tokenuser;
 
-import com.example.financa.entities.TokenUser;
-import com.example.financa.repository.TokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

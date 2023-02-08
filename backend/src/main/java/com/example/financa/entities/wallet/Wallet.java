@@ -1,12 +1,15 @@
-package com.example.financa.entities;
+package com.example.financa.entities.wallet;
 
+import com.example.financa.entities.user.User;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
 @NoArgsConstructor
+@Data
 @Table(name = "tb_wallet")
 public class Wallet {
 
@@ -33,8 +36,7 @@ public class Wallet {
         this.user = user;
     }
 
-    public Wallet(Long id, String name_wallet){
-        this.id = id;
+    public Wallet(String name_wallet){
         this.name_wallet = name_wallet;
     }
 }

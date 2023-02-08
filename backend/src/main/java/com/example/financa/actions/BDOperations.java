@@ -1,12 +1,14 @@
 package com.example.financa.actions;
 
-import com.example.financa.entities.TokenUser;
-import com.example.financa.entities.User;
-import com.example.financa.entities.Wallet;
+import com.example.financa.entities.tokenuser.TokenUser;
+import com.example.financa.entities.user.User;
+import com.example.financa.entities.wallet.Wallet;
+import com.example.financa.entities.walletspending.WalletSpending;
 import com.example.financa.factory.Factories;
-import com.example.financa.service.TokenService;
-import com.example.financa.service.UserService;
-import com.example.financa.service.WalletService;
+import com.example.financa.entities.tokenuser.TokenService;
+import com.example.financa.entities.user.UserService;
+import com.example.financa.entities.wallet.WalletService;
+import com.example.financa.entities.walletspending.WalletSpendingService;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
@@ -30,7 +32,8 @@ public class BDOperations {
 
     /* Methods */
 
-    public static void loadBD(UserService user_service, TokenService token_service, WalletService walletService){
+    public static void loadBD(UserService user_service, TokenService token_service, WalletService wallet_service ,
+                              WalletSpendingService wallet_spending_service){
 
         try {
 
@@ -48,13 +51,19 @@ public class BDOperations {
 
                     case "user" -> user_service.saveUser((User) object);
                     case "token" -> token_service.saveToken((TokenUser) object);
-                    case "wallet" -> walletService.saveWallet((Wallet) object);
-
+                    case "wallet" -> {
+                        ((Wallet) object).setUser(user_service.returnUserById(Long.valueOf(split[2])));
+                        wallet_service.saveWallet((Wallet) object);
+                    }
+                    case "walletspending" -> {
+                        ((WalletSpending) object).setWallet(wallet_service.getWalletById(Long.valueOf(split[3])));
+                        wallet_spending_service.saveWalletSpending((WalletSpending) object);
+                    }
                 }
 
             }
         } catch (IOException e) {
-            throw new RuntimeException("File 'settings.txt' dont exist");
+            throw new RuntimeException("File 'db.txt' dont exist");
         }
 
     }

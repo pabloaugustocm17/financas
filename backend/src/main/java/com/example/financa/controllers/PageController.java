@@ -1,9 +1,9 @@
-package com.example.financa.controller;
+package com.example.financa.controllers;
 
 import com.example.financa.actions.Utils;
-import com.example.financa.dtos.LoginDTO;
-import com.example.financa.entities.User;
-import com.example.financa.service.UserService;
+import com.example.financa.entities.dtos.LoginDTO;
+import com.example.financa.entities.user.User;
+import com.example.financa.entities.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

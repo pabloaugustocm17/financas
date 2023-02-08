@@ -1,6 +1,5 @@
-package com.example.financa.repository;
+package com.example.financa.entities.tokenuser;
 
-import com.example.financa.entities.TokenUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TokenRepository extends JpaRepository<TokenUser, Integer> {

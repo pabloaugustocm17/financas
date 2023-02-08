@@ -1,10 +1,10 @@
-package com.example.financa.service;
+package com.example.financa.entities.wallet;
 
-import com.example.financa.entities.User;
-import com.example.financa.entities.Wallet;
-import com.example.financa.factory.WalletFactory;
-import com.example.financa.repository.WalletRepository;
+import com.example.financa.entities.dtos.WalletDTO;
+import com.example.financa.entities.user.User;
 import org.springframework.stereotype.Service;
+
+import java.util.LinkedList;
 
 @Service
 public class WalletService {
@@ -19,6 +19,10 @@ public class WalletService {
     }
 
     /* Methods */
+
+    public Wallet getWalletById(Long id){
+        return wallet_repository.getWalletById(id);
+    }
 
     public Wallet createWallet(User user){
 
@@ -40,5 +44,11 @@ public class WalletService {
 
     public void saveWallet(Wallet wallet){
         wallet_repository.save(wallet);
+    }
+
+    public LinkedList<WalletDTO> getAllWalletsByUser(Long id_user){
+
+        return wallet_repository.getAllWalletByUser(id_user);
+
     }
 }

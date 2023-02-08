@@ -1,5 +1,7 @@
 package com.example.financa.actions;
 
+import com.example.financa.exception.ParseRuntimeException;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -10,6 +12,18 @@ public class Utils {
     /* Methods */
 
     public static final String SUCESS_REQUEST = "200";
+    public static final String REGEX_NUMER =  "^\\d*\\.\\d+|\\d+\\.\\d*$";
+
+
+    public static double stringToDouble(String number){
+
+        if(verifyNumber(number)){
+            return Double.parseDouble(number);
+        }else{
+            throw new ParseRuntimeException(number);
+        }
+
+    }
 
     public static LocalDate stringToLocalDate(String date){
 
@@ -89,6 +103,20 @@ public class Utils {
         }
 
         return SUCESS_REQUEST;
+    }
+
+    public static Long stringToLong(String number){
+
+        if(verifyNumber(number)){
+            return Long.valueOf(number);
+        }else{
+            throw new ParseRuntimeException(number);
+        }
+
+    }
+
+    public static boolean verifyNumber(String number){
+        return number.matches(REGEX_NUMER);
     }
 
     /* Metadata and Reflection */

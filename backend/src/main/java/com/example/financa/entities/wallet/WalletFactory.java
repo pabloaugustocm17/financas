@@ -1,9 +1,9 @@
-package com.example.financa.factory;
+package com.example.financa.entities.wallet;
 
-import com.example.financa.entities.User;
-import com.example.financa.entities.Wallet;
+import com.example.financa.entities.user.User;
+import com.example.financa.factory.Factory;
 
-public class WalletFactory implements Factory{
+public class WalletFactory implements Factory {
     @Override
     public Object create() {
         return new Wallet();
@@ -14,10 +14,9 @@ public class WalletFactory implements Factory{
 
         String[] args = line.split(";");
 
-        Long id = Long.valueOf(args[1]);
-        String name_wallet = args[2];
+        String name_wallet = args[1];
 
-        return new Wallet(id, name_wallet);
+        return new Wallet(name_wallet);
     }
 
     public Wallet create(User user){

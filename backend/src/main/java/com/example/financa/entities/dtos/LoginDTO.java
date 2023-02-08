@@ -1,4 +1,4 @@
-package com.example.financa.dtos;
+package com.example.financa.entities.dtos;
 
 import com.example.financa.actions.Utils;
 import lombok.AllArgsConstructor;

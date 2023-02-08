@@ -1,9 +1,9 @@
-package com.example.financa.controller;
+package com.example.financa.controllers;
 
-import com.example.financa.entities.User;
-import com.example.financa.entities.Wallet;
-import com.example.financa.service.UserService;
-import com.example.financa.service.WalletService;
+import com.example.financa.entities.user.User;
+import com.example.financa.entities.wallet.Wallet;
+import com.example.financa.entities.user.UserService;
+import com.example.financa.entities.wallet.WalletService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;

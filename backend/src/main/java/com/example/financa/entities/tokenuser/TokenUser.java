@@ -1,6 +1,5 @@
-package com.example.financa.entities;
+package com.example.financa.entities.tokenuser;
 
-import com.example.financa.service.TokenService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;

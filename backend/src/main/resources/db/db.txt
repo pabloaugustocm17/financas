@@ -1,2 +1,3 @@
-user;0;pablo@test.com;1234;pablo;2003-05-17
-wallet;0;wallet_default
+user;pablo@test.com;1234;pablo;2003-05-17
+wallet;wallet_default;1
+walletspending;10.0;2023-02-08;1

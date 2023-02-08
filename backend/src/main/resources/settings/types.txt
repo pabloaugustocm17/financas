@@ -1,2 +1,3 @@
-user;com.example.financa.factory.UserFactory
-wallet;com.example.financa.factory.WalletFactory
+user;com.example.financa.entities.user.UserFactory
+wallet;com.example.financa.entities.wallet.WalletFactory
+walletspending;com.example.financa.entities.walletspending.WalletSpendingFactory

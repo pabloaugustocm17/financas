@@ -1,6 +1,7 @@
-package com.example.financa.entities;
+package com.example.financa.entities.user;
 
 import com.example.financa.actions.Utils;
+import com.example.financa.entities.tokenuser.TokenUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,11 +52,6 @@ public class User{
     }
 
     public User(String email, String password, String name, LocalDate birth_date){
-        init(email, password, name, birth_date);
-    }
-
-    public User(Long id, String email, String password, String name, LocalDate birth_date){
-        this.id = id;
         init(email, password, name, birth_date);
     }
 
